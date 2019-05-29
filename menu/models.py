@@ -27,7 +27,7 @@ class Category(models.Model):
 class Menu(models.Model):
     name = models.CharField(max_length=20)
     price = models.PositiveIntegerField()
-    image = models.ImageField()
+    image = models.ImageField(blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     desc = models.TextField(blank=True)
 
