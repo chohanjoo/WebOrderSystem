@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import MenuBoardForm
 from .models import MenuBoard
 import random
+from menu.models import Menu
 # from django.utils.http import urlsafe_base64_encode
 # from django.utils.encoding import force_bytes
 # Create your views here.
@@ -26,7 +27,8 @@ def create_menuboard(request):
     pass
     
 def edit_menuboard(request):
-    return render(request,'menu/index_edit.html')
+    menu_list = Menu.objects.all()
+    return render(request,'menu/index_edit.html',{'menu_list':menu_list})
 
 
 

@@ -178,73 +178,30 @@
 
 					<div class="product_grid">
 
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="{% static 'menu/images/product_1.jpg' %}" alt=""></div>
-							<div class="rating rating_4" data-rating="4">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="product_content clearfix">
-								<div class="product_info">
-									<div class="product_name"><a href="product.html">Woman's Long Dress</a></div>
-									<div class="product_price">$45.00</div>
-								</div>
-								<div class="product_options">
-									<div class="product_buy product_option"><img src="{% static 'menu/images/shopping-bag-white.svg' %}" alt=""></div>
-									<div class="product_fav product_option">+</div>
-								</div>
-							</div>
-						</div>
 
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="{% static 'menu/images/product_2.jpg' %}" alt=""></div>
-							<div class="rating rating_5" data-rating="5">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="product_content clearfix">
-								<div class="product_info">
-									<div class="product_name"><a href="product.html">2 Piece Swimsuit</a></div>
-									<div class="product_price">$35.00</div>
-								</div>
-								<div class="product_options">
-									<div class="product_buy product_option"><img src="{% static 'menu/images/shopping-bag-white.svg' %}" alt=""></div>
-									<div class="product_fav product_option">+</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="{% static 'menu/images/product_3.jpg' %}" alt=""></div>
-							<div class="rating rating_3" data-rating="3">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="product_content clearfix">
-								<div class="product_info">
-									<div class="product_name"><a href="product.html">Man Blue Jacket</a></div>
-									<div class="product_price">$145.00</div>
-								</div>
-								<div class="product_options">
-									<div class="product_buy product_option"><img src="{% static 'menu/images/shopping-bag-white.svg' %}" alt=""></div>
-									<div class="product_fav product_option">+</div>
-								</div>
-							</div>
-						</div>
-
-						{% for item in drink_list %}
+                                                <!-- Product -->
+                                                <div class="product">
+                                                    <div class="product_image"><img src="{% static 'menu/images/product_1.jpg' %}" alt=""></div>
+                                                    <div class="rating rating_4" data-rating="4">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                    <div class="product_content clearfix">
+                                                        <div class="product_info">
+                                                            <div class="product_name"><a href="product.html">Woman's Long Dress</a></div>
+                                                            <div class="product_price">$45.00</div>
+                                                        </div>
+                                                        <div class="product_options">
+                                                            <div class="product_buy product_option"><img src="{% static 'menu/images/shopping-bag-white.svg' %}" alt=""></div>
+                                                            <div class="product_fav product_option">+</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                        
+						{% for item in menu_list %}
 						<!-- Product -->
 						<div class="product">
 							<div class="product_image"><img src="{{ item.image.url }}" alt=""></div>
@@ -259,7 +216,6 @@
 								<div class="product_info">
 									<div class="product_name"><a href="product.html">{{ item.name }}</a></div>
 									<div class="product_price">${{ item.price }}</div>
-									<div >#{{ item.image.url }}</div>
 								</div>
 								<div class="product_options">
 									<div class="product_buy product_option"><img src="{% static 'menu/images/shopping-bag-white.svg' %}" alt=""></div>
@@ -268,10 +224,47 @@
 							</div>
 						</div>
 						{% endfor %}
-
-						
-
-						
+						<div class="product">
+							<div class="product_image"><img src="{% static 'menu/images/default.svg' %}" width="510" height="540" alt=""></div>
+							<div class="rating rating_3" data-rating="3">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+							<div class="product_content clearfix">
+								<div class="product_info">
+									<div class="product_name"><a href="product.html">dd</a></div>
+									<div class="product_price">$dd</div>
+								</div>
+								<div class="product_options">
+									<div class="product_buy product_option"><img src="{% static 'menu/images/shopping-bag-white.svg' %}" alt=""></div>
+									<div class="product_fav product_option">+</div>
+								</div>
+							</div>
+                        </div>
+                        
+                        <div class="product">
+							<div class="product_image"><img src="{% static 'menu/images/default.svg' %}" width="510" height="540" alt=""></div>
+							<div class="rating rating_3" data-rating="3">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+							<div class="product_content clearfix">
+								<div class="product_info">
+									<div class="product_name"><a href="product.html">dd</a></div>
+									<div class="product_price">$dd</div>
+								</div>
+								<div class="product_options">
+									<div class="product_buy product_option"><img src="{% static 'menu/images/shopping-bag-white.svg' %}" alt=""></div>
+									<div class="product_fav product_option">+</div>
+								</div>
+							</div>
+						</div>
 
 					</div>
 				</div>
@@ -331,14 +324,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</footer>
 </div>
 
-<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-<script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
-<script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
-<script src="{% static 'plugins/easing/easing.js' %}"></script>
-<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
-<script src="{% static 'plugins/Isotope/isotope.pkgd.min.js' %}"></script>
-<script src="{% static 'plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.js' %}"></script>
-<script src="{% static 'plugins/jquery-ui-1.12.1.custom/jquery-ui.js' %}"></script>
-<script src="{% static 'js/categories_custom.js' %}"></script>
+<script src="{% static 'menu/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'menu/styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'menu/styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'menu/plugins/easing/easing.js' %}"></script>
+<script src="{% static 'menu/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'menu/plugins/Isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'menu/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.js' %}"></script>
+<script src="{% static 'menu/plugins/jquery-ui-1.12.1.custom/jquery-ui.js' %}"></script>
+<script src="{% static 'menu/js/categories_custom.js' %}"></script>
 </body>
 </html>
