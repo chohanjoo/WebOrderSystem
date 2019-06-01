@@ -11,7 +11,7 @@ def drink_list(request):
 def add_menu(request):
 
     if request.method == "POST":
-        form = MenuForm(request.POST)
+        form = MenuForm(request.POST, request.FILES)
         if form.is_valid():
             menu = form.save(commit=False)
             menu.save()

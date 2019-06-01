@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'menu',
     'owner',
     'accounts',
+    'django_popup_view_field',
 ]
 
 MIDDLEWARE = [

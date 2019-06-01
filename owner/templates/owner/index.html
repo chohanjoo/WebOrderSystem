@@ -328,27 +328,54 @@
 
         </nav>
         <!-- End of Topbar -->
-
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title">메뉴판 생성</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+          <form method="POST" class="post-form" action='' enctype="multipart/form-data">
+            {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="save btn btn-default">Save</button>
+        
+    </form>
+          <!-- <label >메뉴판 이름</label>
+          <input type="text"> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    
+  </div>
+</div>
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>메뉴판 생성</a>
+            <button data-toggle="modal" data-target="#myModal" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>메뉴판 생성</button>
           </div>
 
           <!-- Content Row -->
           <div class="row">
 
             <!-- Earnings (Monthly) Card Example -->
+            {% for menuboard in menuboard_list %}
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                        <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800">{{ menuboard.menuBoardName }}</div></a>
+                      <!-- <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ menuboard.menuBoardName }}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div> -->
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -357,6 +384,7 @@
                 </div>
               </div>
             </div>
+            {% endfor %}
 
             </div>
 
@@ -616,6 +644,8 @@
   <!-- Page level custom scripts -->
   <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
   <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+
+
 
 </body>
 

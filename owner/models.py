@@ -13,5 +13,5 @@ class Shop(models.Model):
 
 class MenuBoard(models.Model):
     menuBoardName = models.CharField(max_length=20)
-    menuBoardID = models.PositiveIntegerField()
+    menuBoardID = models.BigIntegerField()
     shopID = models.ForeignKey(Shop, on_delete=models.CASCADE)
