@@ -3,6 +3,7 @@ from .forms import MenuBoardForm
 from .models import MenuBoard
 import random
 from menu.models import Menu
+from menu.forms import MenuForm
 # from django.utils.http import urlsafe_base64_encode
 # from django.utils.encoding import force_bytes
 # Create your views here.
@@ -28,7 +29,17 @@ def create_menuboard(request):
     
 def edit_menuboard(request):
     menu_list = Menu.objects.all()
-    return render(request,'menu/index_edit.html',{'menu_list':menu_list})
+    if request.method == "POST":
+        form = MenuForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_menu = form.save(commit=False)
+            new_menu.save()
+            return redirect('owner:edit_menuboard')
+    else:
+        form = MenuForm()
+    return render(request,'menu/index_edit.html',
+            {'menu_list':menu_list,
+             'form' : form })
 
 
 

@@ -5,8 +5,8 @@ from .models import Menu
 # Create your views here.
 
 def drink_list(request):
-    drink_list = Menu.objects.all()
-    return render(request,'menu/index.html',{'drink_list':drink_list})
+    menu_list = Menu.objects.all()
+    return render(request,'menu/index.html',{'menu_list':menu_list})
 
 def add_menu(request):
 
@@ -22,11 +22,8 @@ def add_menu(request):
     return render(request,'menu/add_menu.html', {'form':form})
 
 
-def add_shop(request):
-    pass
-
-def add_menuboard(request):
-    pass
-
-def add_category(request):
-    pass
+def menu_detail(request,pk):
+    menu_detail = Menu.objects.get(pk=pk)
+    return render(request,'menu/product.html',{
+        'menu_detail' : menu_detail,
+    })

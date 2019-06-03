@@ -178,28 +178,6 @@
 
 					<div class="product_grid">
 
-
-                                                <!-- Product -->
-                                                <div class="product">
-                                                    <div class="product_image"><img src="{% static 'menu/images/product_1.jpg' %}" alt=""></div>
-                                                    <div class="rating rating_4" data-rating="4">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
-                                                    <div class="product_content clearfix">
-                                                        <div class="product_info">
-                                                            <div class="product_name"><a href="product.html">Woman's Long Dress</a></div>
-                                                            <div class="product_price">$45.00</div>
-                                                        </div>
-                                                        <div class="product_options">
-                                                            <div class="product_buy product_option"><img src="{% static 'menu/images/shopping-bag-white.svg' %}" alt=""></div>
-                                                            <div class="product_fav product_option">+</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                         
 						{% for item in menu_list %}
 						<!-- Product -->
@@ -214,7 +192,7 @@
 							</div>
 							<div class="product_content clearfix">
 								<div class="product_info">
-									<div class="product_name"><a href="product.html">{{ item.name }}</a></div>
+									<div class="product_name"><a href="{% url 'menu:menu_detail' item.pk %}">{{ item.name }}</a></div>
 									<div class="product_price">${{ item.price }}</div>
 								</div>
 								<div class="product_options">
@@ -223,48 +201,9 @@
 								</div>
 							</div>
 						</div>
-						{% endfor %}
-						<div class="product">
-							<div class="product_image"><img src="{% static 'menu/images/default.svg' %}" width="510" height="540" alt=""></div>
-							<div class="rating rating_3" data-rating="3">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="product_content clearfix">
-								<div class="product_info">
-									<div class="product_name"><a href="product.html">dd</a></div>
-									<div class="product_price">$dd</div>
-								</div>
-								<div class="product_options">
-									<div class="product_buy product_option"><img src="{% static 'menu/images/shopping-bag-white.svg' %}" alt=""></div>
-									<div class="product_fav product_option">+</div>
-								</div>
-							</div>
-                        </div>
+                        {% endfor %}
                         
-                        <div class="product">
-							<div class="product_image"><img src="{% static 'menu/images/default.svg' %}" width="510" height="540" alt=""></div>
-							<div class="rating rating_3" data-rating="3">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="product_content clearfix">
-								<div class="product_info">
-									<div class="product_name"><a href="product.html">dd</a></div>
-									<div class="product_price">$dd</div>
-								</div>
-								<div class="product_options">
-									<div class="product_buy product_option"><img src="{% static 'menu/images/shopping-bag-white.svg' %}" alt=""></div>
-									<div class="product_fav product_option">+</div>
-								</div>
-							</div>
-						</div>
+						
 
 					</div>
 				</div>
