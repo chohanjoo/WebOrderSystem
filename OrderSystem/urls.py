@@ -26,6 +26,8 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('django_popup_view_field/',
         include('django_popup_view_field.urls')),
+    # path('cart/',include('basket.urls')),
+    path('cart/',include('cart.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

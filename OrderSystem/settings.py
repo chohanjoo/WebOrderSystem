@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'owner',
     'accounts',
     'django_popup_view_field',
+    'basket',
+    'cart',
 ]
 
 MIDDLEWARE = [
