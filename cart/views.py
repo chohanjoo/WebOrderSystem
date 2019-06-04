@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .cart import Cart
 from menu.models import Menu
+from .kakaopay import kakaopay_request
 
 # Create your views here.
 
@@ -28,3 +29,7 @@ def remove_from_cart(request, product_id):
 
 def get_cart(request):
     return render(request, 'cart_list.html', {'cart': Cart(request)})
+
+def pay(request):
+    url = kakaopay_request(request)
+    return redirect(url)

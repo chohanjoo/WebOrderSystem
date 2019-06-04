@@ -210,7 +210,8 @@
 								<div class="cart_total_price ml-auto">₩{{ total_price }}</div>
 							</li>
 						</ul>
-						<button class="cart_total_button">proceed to checkout</button>
+
+						<a href="{% url 'cart:pay' %}"><button class="cart_total_button">proceed to checkout</button></a>
 					</div>
 				</div>
 			</div>
@@ -258,5 +259,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{% static 'menu/plugins/easing/easing.js' %}"></script>
 <script src="{% static 'menu/plugins/parallax-js-master/parallax.min.js' %}"></script>
 <script src="{% static 'menu/js/cart_custom.js' %}"></script>
+<script src="{% static 'menu/js/kakaopay.js' %}"></script>
 </body>
 </html>
