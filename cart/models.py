@@ -6,7 +6,6 @@ from django.contrib.contenttypes.models import ContentType
 class Cart(models.Model):
     creation_date = models.DateTimeField(verbose_name=_('creation date'))
     checked_out = models.BooleanField(default=False, verbose_name=_('checked out'))
-
     class Meta:
         verbose_name = _('cart')
         verbose_name_plural = _('carts')
@@ -14,6 +13,10 @@ class Cart(models.Model):
 
     def __unicode__(self):
         return unicode(self.creation_date)
+
+
+
+
 
 
 class ItemManager(models.Manager):

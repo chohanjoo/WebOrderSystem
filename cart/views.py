@@ -6,8 +6,12 @@ from menu.models import Menu
 
 def cart_list(request):
     cart = Cart(request)
+    total_price = 0
+    for item in cart.cart.item_set.all():
+        total_price = total_price + item.total_price
     return render(request,'cart/cart_list.html',{
         'cart' : cart,
+        'total_price' : total_price,
     })
 
 
