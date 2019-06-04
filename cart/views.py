@@ -1,17 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .cart import Cart
 from menu.models import Menu
 
 # Create your views here.
 
 def cart_list(request):
-    return render(request,'basket/cart_list.html')
-
-
-def add_to_cart(request, product_id, quantity):
-    menu = Menu.objects.get(id=product_id)
     cart = Cart(request)
-    cart.add(menu, product.unit_price, quantity)
+    return render(request,'cart/cart_list.html',{
+        'cart' : cart,
+    })
+
+
+def add_to_cart(request, menu_id, quantity):
+    menu = Menu.objects.get(id=menu_id)
+    cart = Cart(request)
+    cart.add(menu, menu.price, quantity)
+    return redirect('cart:cart_list')
 
 def remove_from_cart(request, product_id):
     menu = Menu.objects.get(id=product_id)

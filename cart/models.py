@@ -15,6 +15,7 @@ class Cart(models.Model):
     def __unicode__(self):
         return unicode(self.creation_date)
 
+
 class ItemManager(models.Manager):
     def get(self, *args, **kwargs):
         if 'product' in kwargs:
