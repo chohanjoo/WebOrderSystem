@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import MenuBoardForm
 from .models import MenuBoard
 import random
-from menu.models import Menu
+from menu.models import Menu,Category
 from menu.forms import MenuForm
 # from django.utils.http import urlsafe_base64_encode
 # from django.utils.encoding import force_bytes
@@ -29,6 +29,7 @@ def create_menuboard(request):
     
 def edit_menuboard(request):
     menu_list = Menu.objects.all()
+    category_list = Category.objects.all()
     if request.method == "POST":
         form = MenuForm(request.POST, request.FILES)
         if form.is_valid():
@@ -39,6 +40,7 @@ def edit_menuboard(request):
         form = MenuForm()
     return render(request,'menu/index_edit.html',
             {'menu_list':menu_list,
+             'category_list' : category_list,
              'form' : form })
 
 

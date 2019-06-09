@@ -1,12 +1,15 @@
 from django.shortcuts import render,redirect
 from .forms import MenuForm
-from .models import Menu
+from .models import Menu,Category
 
 # Create your views here.
 
 def drink_list(request):
     menu_list = Menu.objects.all()
-    return render(request,'menu/index.html',{'menu_list':menu_list})
+    category_list = Category.objects.all()
+    return render(request,'menu/index.html',{
+        'menu_list':menu_list,
+        'category_list' : category_list})
 
 def add_menu(request):
 

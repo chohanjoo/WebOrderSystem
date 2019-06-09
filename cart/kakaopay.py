@@ -25,3 +25,4 @@ def kakaopay_request(self):
     result = requests.post("https://kapi.kakao.com/v1/payment/ready",headers=headers,data=data)
     print(result.json()['next_redirect_pc_url'])
     return result.json()['next_redirect_pc_url']
+

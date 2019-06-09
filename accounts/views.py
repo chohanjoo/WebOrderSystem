@@ -65,3 +65,9 @@ class MyLoginView(LoginView):
         return redirect(self.get_success_url())
 
 signin = MyLoginView.as_view()
+
+def profile(request,pk):
+    user_profile = Profile.objects.get(pk=pk)
+    return render(request,'accounts/profile.html',{
+        'profile': user_profile,
+    })

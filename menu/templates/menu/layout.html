@@ -22,9 +22,9 @@
 			<div class="logo"><a href="#">마이커피</a></div>
 			<nav class="main_nav">
 				<ul>
-					<li><a href="{% url 'menu:list' %}">Drink</a></li>
-					<li><a href="#">Food</a></li>
-					<li><a href="#">Goods</a></li>
+					{% for category in category_list %}
+					<li><a href="{% url 'menu:list' %}">{{ category.name }}</a></li>
+					{% endfor %}
 				</ul>
 			</nav>
 			<div class="header_content ml-auto">
