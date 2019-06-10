@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import MenuForm
+from .forms import MenuForm,CategoryForm
 from .models import Menu,Category
 
 # Create your views here.
@@ -7,6 +7,19 @@ from .models import Menu,Category
 def drink_list(request):
     menu_list = Menu.objects.all()
     category_list = Category.objects.all()
+    # if request.method == "POST":
+    #     form = CategoryForm(request.POST)
+    #     if form.is_valid():
+    #         category = form.save(commit=False)
+    #         category.save()
+    #         return redirect('owner:edit_menuboard')
+    # else:
+    #     form =CategoryForm()
+    # return render(request,'menu/index.html',{
+    #     'menu_list':menu_list,
+    #     'category_list' : category_list,
+    #     'form' : form,
+    #     })
     return render(request,'menu/index.html',{
         'menu_list':menu_list,
         'category_list' : category_list})

@@ -3,7 +3,7 @@ from .forms import MenuBoardForm,ShopForm
 from .models import MenuBoard,Shop
 import random
 from menu.models import Menu,Category
-from menu.forms import MenuForm
+from menu.forms import MenuForm,CategoryForm
 from django.contrib.auth.models import User
 from datetime import datetime
 
@@ -69,12 +69,32 @@ def edit_menuboard(request):
             return redirect('owner:edit_menuboard')
     else:
         form = MenuForm()
+        category_form = CategoryForm()
     return render(request,'menu/index_edit.html',
             {'menu_list':menu_list,
              'category_list' : category_list,
-             'form' : form })
+             'form' : form,
+             'category_form' : category_form,
+              })
 
 
+
+def add_category(request):
+    menu_list = Menu.objects.all()
+    category_list = Category.objects.all()
+    if request.method == "POST" :
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            new_category = form.save(commit=False)
+            new_category.save()
+            return redirect('owner:edit_menuboard')
+    else:
+        form = CategoryForm()
+    return render(request,'menu/index_edit.html',{
+        'menu_list' : menu_list,
+        'category_list' : category_list,
+        'form' : form,
+    })
 
 
 from django.views.generic import TemplateView

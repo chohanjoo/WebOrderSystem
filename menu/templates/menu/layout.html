@@ -13,6 +13,32 @@
 </head>
 <body>
 
+	<!-- Modal -->
+	<div class="modal fade" id="CategoryAddModal" role="dialog">
+			<div class="modal-dialog">
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">메뉴판 생성</h4>
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+						<form method="POST" class="post-form" action="{% url 'owner:add_category' %}" enctype="multipart/form-data">
+							{% csrf_token %}
+							{{ category_form.as_p }}
+							<button type="submit" class="save btn btn-default">Save</button>
+							
+						</form>
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			  </div>
+			  
+			</div>
+		  </div>
+		  <!--End Modal-->
+		  
 <div class="super_container">
 	
 	<!-- Header -->
@@ -22,9 +48,12 @@
 			<div class="logo"><a href="#">마이커피</a></div>
 			<nav class="main_nav">
 				<ul>
+					
 					{% for category in category_list %}
 					<li><a href="{% url 'menu:list' %}">{{ category.name }}</a></li>
 					{% endfor %}
+					{% block header_category %}
+					{% endblock %}
 				</ul>
 			</nav>
 			<div class="header_content ml-auto">

@@ -9,7 +9,17 @@
 <link rel="stylesheet" type="text/css" href="{% static 'menu/styles/categories.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'menu/styles/categories_responsive.css' %}">
 {% endblock %}
-
+			
+	{% block header_category %}
+	<!-- <li><a href="{% url 'menu:list' %}">input</a></li> -->
+		
+	
+		<li>
+			<div class="star" data-toggle="modal" data-target="#CategoryAddModal">
+					<a href="#"><img src="{% static 'menu/images/category_add.png' %}" alt=""></a>
+			</div>
+		</li>
+	{% endblock %}
 	{% block content %}
 	<!-- Home -->
 
