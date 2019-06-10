@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'django_popup_view_field',
     'cart',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

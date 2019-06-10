@@ -16,7 +16,7 @@ def signup(request):
         form = UserForm(request.POST)
         if form.is_valid():
             new_user = User.objects.create_user(**form.cleaned_data)
-            login(request, new_user)
+            #login(request, new_user)
             return redirect('accounts:login')
     else:
         form = UserForm()
@@ -57,12 +57,12 @@ class MyLoginView(LoginView):
     form_class = AuthenticationForm
     template_name = 'accounts/login.html'
 
-    def get_success_url(self):
-        return resolve_url('owner:index')
+    def get_success_url(self,user):
+        return resolve_url('owner:index',pk=user.pk)
 
     def form_valid(self,form):
         auth_login(self.request, form.get_user())
-        return redirect(self.get_success_url())
+        return redirect(self.get_success_url(form.get_user()))
 
 signin = MyLoginView.as_view()
 

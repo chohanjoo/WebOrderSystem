@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.shortcuts import redirect
 
 app_name = "root"
 urlpatterns = [
@@ -28,6 +29,7 @@ urlpatterns = [
         include('django_popup_view_field.urls')),
     # path('cart/',include('basket.urls')),
     path('cart/',include('cart.urls')),
+    path('', lambda req: redirect('accounts:login'), name='root'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

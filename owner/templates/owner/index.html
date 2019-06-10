@@ -30,7 +30,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'owner:index' %}">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'owner:index' user.pk %}">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -42,7 +42,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'owner:index' %}">
+        <a class="nav-link" href="{% url 'owner:index' user.pk %}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -247,7 +247,11 @@
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.username }}</span>
+                  {% if user.profile.photo %}
                   <img class="img-profile rounded-circle" src="{{ user.profile.photo.url }}">
+                  {% else %}
+                  <img class="img-profile rounded-circle" src="{% static 'owner/image/default_profile.jpg' %}">
+                  {% endif %}
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -292,6 +296,32 @@
 
         </nav>
         <!-- End of Topbar -->
+        <!-- Modal -->
+<div class="modal fade" id="shopModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">가게 생성</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" class="post-form" action="{% url 'owner:create_shop' user.pk %}" enctype="multipart/form-data">
+              {% csrf_token %}
+          {{shop_form.as_p}}
+          <button type="submit" class="save btn btn-default">Save</button>
+          
+      </form>
+            <!-- <label >메뉴판 이름</label>
+            <input type="text"> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
@@ -324,9 +354,58 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <button data-toggle="modal" data-target="#myModal" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>메뉴판 생성</button>
+            <div id="content" class="d-flex flex-column"></div>
+            
+            </div>
           </div>
+          <div class="container-fluid">
 
+              <!-- Page Heading -->
+              <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <button data-toggle="modal" data-target="#shopModal" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>가게 생성</button>
+                </div>
+              </div>
+         
+
+              <div class="container-fluid">
+                      <!-- Page Heading -->
+                      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">가게</h1> 
+                        <button data-toggle="modal" data-target="#myModal" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>메뉴판 생성</button>
+                        </div>
+                      
+              <!-- Content Row -->
+          <div class="row">
+
+              <!-- Earnings (Monthly) Card Example -->
+              {% for shop in shop_list %}
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                          <a href="{% url 'owner:edit_menuboard' %}"><div class="h5 mb-0 font-weight-bold text-gray-800">{{ shop.shopName }}</div></a>
+                        <!-- <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ menuboard.menuBoardName }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div> -->
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+  
+              </div>
+         
+
+              </div>
+              
+              <div class="container-fluid">
+                  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                      <h1 class="h3 mb-0 text-gray-800">메뉴판</h1> 
+                      </div>
           <!-- Content Row -->
           <div class="row">
 
@@ -351,7 +430,7 @@
             {% endfor %}
 
             </div>
-
+          </div>
            <!-- Begin Page Content -->
         <div class="container-fluid">
 

@@ -3,6 +3,9 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.urls import reverse
 
+from owner.models import Shop
+
+
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete =models.CASCADE,primary_key=True)
     photo = models.ImageField(blank=True)
