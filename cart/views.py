@@ -2,17 +2,20 @@ from django.shortcuts import render,redirect
 from .cart import Cart
 from menu.models import Menu
 from .kakaopay import kakaopay_request
+from menu.models import Category
 
 # Create your views here.
 
 def cart_list(request):
     cart = Cart(request)
     total_price = 0
+    category_list = Category.objects.all()
     for item in cart.cart.item_set.all():
         total_price = total_price + item.total_price
     return render(request,'cart/cart_list.html',{
         'cart' : cart,
         'total_price' : total_price,
+        'category_list' : category_list,
     })
 
 

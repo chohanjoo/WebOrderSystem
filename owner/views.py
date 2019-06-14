@@ -58,15 +58,17 @@ def create_shop(request,pk):
 def create_menuboard(request):
     pass
     
-def edit_menuboard(request):
+def edit_menuboard(request, pk, menuboard_id):
     menu_list = Menu.objects.all()
-    category_list = Category.objects.all()
+    menuboard = MenuBoard.objects.get(menuBoardID=menuboard_id)
+    category_list = Category.objects.all().filter(menuBoard=menuboard)
+    # menuboard_list = MenuBoard.objects.all()
     if request.method == "POST":
         form = MenuForm(request.POST, request.FILES)
         if form.is_valid():
             new_menu = form.save(commit=False)
             new_menu.save()
-            return redirect('owner:edit_menuboard')
+            return redirect('owner:edit_menuboard',pk=pk,menuboard_id=menuboard_id)
     else:
         form = MenuForm()
         category_form = CategoryForm()
@@ -75,11 +77,12 @@ def edit_menuboard(request):
              'category_list' : category_list,
              'form' : form,
              'category_form' : category_form,
+             'menuboard_id' : menuboard_id,
               })
 
 
 
-def add_category(request):
+def add_category(request,pk,menuboard_id):
     menu_list = Menu.objects.all()
     category_list = Category.objects.all()
     if request.method == "POST" :
@@ -87,7 +90,7 @@ def add_category(request):
         if form.is_valid():
             new_category = form.save(commit=False)
             new_category.save()
-            return redirect('owner:edit_menuboard')
+            return redirect('owner:edit_menuboard',pk=pk,menuboard_id=menuboard_id)
     else:
         form = CategoryForm()
     return render(request,'menu/index_edit.html',{

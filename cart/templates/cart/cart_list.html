@@ -1,114 +1,30 @@
+{% extends "cart/layout.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Cart</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Wish shop project">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% block header %}
 <link rel="stylesheet" type="text/css" href="{% static 'menu/styles/bootstrap4/bootstrap.min.css' %}">
 <link href="{% static 'menu/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{% static 'menu/styles/cart.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'menu/styles/cart_responsive.css' %}">
-</head>
-<body>
+{% endblock %}
 
-<div class="super_container">
-	
-	<!-- Header -->
 
-	<header class="header">
-		<div class="header_inner d-flex flex-row align-items-center justify-content-start">
-			<div class="logo"><a href="#">Wish</a></div>
-			<nav class="main_nav">
-				<ul>
-					<li><a href="index.html">home</a></li>
-					<li><a href="categories.html">clothes</a></li>
-					<li><a href="categories.html">accessories</a></li>
-					<li><a href="categories.html">lingerie</a></li>
-					<li><a href="contact.html">contact</a></li>
-				</ul>
-			</nav>
-			<div class="header_content ml-auto">
-				<div class="search header_search">
-					<form action="#">
-						<input type="search" class="search_input" required="required">
-						<button type="submit" id="search_button" class="search_button"><img src="{% static 'menu/images/magnifying-glass.svg' %}" alt=""></button>
-					</form>
-				</div>
-				<div class="shopping">
-					<!-- Cart -->
-					<a href="#">
-						<div class="cart">
-							<img src="{% static 'menu/images/shopping-bag.svg' %}" alt="">
-							<div class="cart_num_container">
-								<div class="cart_num_inner">
-									<div class="cart_num">1</div>
-								</div>
-							</div>
-						</div>
-					</a>
-					<!-- Star -->
-					<a href="#">
-						<div class="star">
-							<img src="{% static 'menu/images/star.svg' %}" alt="">
-							<div class="star_num_container">
-								<div class="star_num_inner">
-									<div class="star_num">0</div>
-								</div>
-							</div>
-						</div>
-					</a>
-					<!-- Avatar -->
-					<a href="#">
-						<div class="avatar">
-							<img src="{% static 'menu/images/avatar.svg' %}" alt="">
-						</div>
-					</a>
-				</div>
-			</div>
 
-			<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
-		</div>
-	</header>
-
-	<!-- Menu -->
-
-	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
-		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-		<div class="logo menu_mm"><a href="#">Wish</a></div>
-		<div class="search">
-			<form action="#">
-				<input type="search" class="search_input menu_mm" required="required">
-				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="{% static 'menu/images/magnifying-glass.svg' %}" alt=""></button>
-			</form>
-		</div>
-		<nav class="menu_nav">
-			<ul class="menu_mm">
-				<li class="menu_mm"><a href="index.html">home</a></li>
-				<li class="menu_mm"><a href="#">clothes</a></li>
-				<li class="menu_mm"><a href="#">accessories</a></li>
-				<li class="menu_mm"><a href="#">lingerie</a></li>
-				<li class="menu_mm"><a href="#">contact</a></li>
-			</ul>
-		</nav>
-	</div>
-
+{% block content %}
 	<!-- Home -->
 
 	<div class="home">
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="{% static 'menu/images/cart.jpg' %}" data-speed="0.8"></div>
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="{% static 'menu/images/background.jpeg' %}" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
 					<div class="home_container">
 						<div class="home_content">
-							<div class="home_title">Shopping Cart</div>
+							<div class="home_title">장바구니</div>
 							<div class="breadcrumbs">
 								<ul>
 									<li><a href="index.html">Home</a></li>
-									<li>Shopping Cart</li>
+									<li>장바구니</li>
 								</ul>
 							</div>
 						</div>
@@ -124,18 +40,18 @@
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<div class="cart_title">your shopping cart</div>
+					<div class="cart_title">장바구니</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<div class="cart_bar d-flex flex-row align-items-center justify-content-start">
-						<div class="cart_bar_title_name">Product</div>
+						<div class="cart_bar_title_name">상품명</div>
 						<div class="cart_bar_title_content ml-auto">
 							<div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end">
-								<div class="cart_bar_title_price">Price</div>
-								<div class="cart_bar_title_quantity">Quantity</div>
-								<div class="cart_bar_title_total">Total</div>
+								<div class="cart_bar_title_price">상품금액</div>
+								<div class="cart_bar_title_quantity">수량</div>
+								<div class="cart_bar_title_total">소계금액</div>
 								<div class="cart_bar_title_button"></div>
 							</div>
 						</div>
@@ -188,7 +104,7 @@
 					<div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start">
 						<button class="button_clear cart_button">clear cart</button>
 						<button class="button_update cart_button">update cart</button>
-						<button class="button_update cart_button_2 ml-md-auto">continue shopping</button>
+						<button class="button_update cart_button_2 ml-md-auto">쇼핑 계속하기</button>
 					</div>
 				</div>
 			</div>
@@ -203,56 +119,26 @@
 				<!-- Cart Total -->
 				<div class="col-lg-5 offset-lg-1">
 					<div class="cart_total">
-						<div class="cart_title">cart total</div>
+						<div class="cart_title">총 주문금액</div>
 						<ul>
 							<li class="d-flex flex-row align-items-center justify-content-start">
-								<div class="cart_total_title">Total</div>
+								<div class="cart_total_title">금액</div>
 								<div class="cart_total_price ml-auto">₩{{ total_price }}</div>
 							</li>
 						</ul>
 
-						<a href="{% url 'cart:pay' %}"><button class="cart_total_button">proceed to checkout</button></a>
+						<a href="{% url 'cart:pay' %}"><button class="cart_total_button">주문하기</button></a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-
+{% endblock %}
 	<!-- Footer -->
 
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col text-center">
-					<div class="footer_logo"><a href="#">Wish</a></div>
-					<nav class="footer_nav">
-						<ul>
-							<li><a href="index.html">home</a></li>
-							<li><a href="categories.html">clothes</a></li>
-							<li><a href="categories.html">accessories</a></li>
-							<li><a href="categories.html">lingerie</a></li>
-							<li><a href="contact.html">contact</a></li>
-						</ul>
-					</nav>
-					<div class="footer_social">
-						<ul>
-							<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						</ul>
-					</div>
-					<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-				</div>
-			</div>
-		</div>
-	</footer>
-</div>
-
+	
+{% block script %}
 <script src="{% static 'menu/js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'menu/styles/bootstrap4/popper.js' %}"></script>
 <script src="{% static 'menu/styles/bootstrap4/bootstrap.min.js' %}"></script>
@@ -260,5 +146,4 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{% static 'menu/plugins/parallax-js-master/parallax.min.js' %}"></script>
 <script src="{% static 'menu/js/cart_custom.js' %}"></script>
 <script src="{% static 'menu/js/kakaopay.js' %}"></script>
-</body>
-</html>
+{% endblock %}
