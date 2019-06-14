@@ -121,12 +121,3 @@ def add_category(request,pk,menuboard_id):
         'form' : form,
     })
 
-
-from django.views.generic import TemplateView
-from django_popup_view_field.registry import registry_popup_view
-
-class ColorsPopupView(TemplateView):
-    template_name = 'owner/popup.html'
-
-# REGISTER IS IMPORTANT
-registry_popup_view.register(ColorsPopupView)

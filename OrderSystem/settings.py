@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'menu',
     'owner',
     'accounts',
-    'django_popup_view_field',
     'cart',
     'django_extensions',
 ]

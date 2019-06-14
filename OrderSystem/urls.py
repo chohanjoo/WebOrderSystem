@@ -25,9 +25,6 @@ urlpatterns = [
     path('menu/',include('menu.urls')),
     path('owner/',include('owner.urls')),
     path('accounts/', include('accounts.urls')),
-    path('django_popup_view_field/',
-        include('django_popup_view_field.urls')),
-    # path('cart/',include('basket.urls')),
     path('cart/',include('cart.urls')),
     path('', lambda req: redirect('accounts:login'), name='root'),
 ]
