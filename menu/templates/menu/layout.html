@@ -50,7 +50,13 @@
 				<ul>
 					
 					{% for category in category_list %}
+
+					{% if user.is_authenticated %}
+					<li><a href="{% url 'owner:edit_menuboard_category' user.pk category.menuBoard.menuBoardID category.pk %}">{{ category.name }}</a></li>
+					{% else %}
 					<li><a href="{% url 'menu:list' %}">{{ category.name }}</a></li>
+					{% endif %}
+
 					{% endfor %}
 					{% block header_category %}
 					{% endblock %}
