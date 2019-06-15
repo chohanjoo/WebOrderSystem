@@ -111,6 +111,7 @@ def add_category(request,pk,menuboard_id):
         form = CategoryForm(request.POST)
         if form.is_valid():
             new_category = form.save(commit=False)
+            new_category.menuBoard = MenuBoard.objects.get(menuBoardID=menuboard_id)
             new_category.save()
             return redirect('owner:edit_menuboard',pk=pk,menuboard_id=menuboard_id)
     else:

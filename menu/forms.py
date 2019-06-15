@@ -18,7 +18,7 @@ class CategoryForm(forms.ModelForm):
 
     class Meta:
         model = Category
-        fields = ('name', 'menuBoard')
+        fields = ('name',)
 
 # class ShopForm(forms.ModelForm):
 

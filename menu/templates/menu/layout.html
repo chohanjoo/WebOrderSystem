@@ -12,32 +12,9 @@
 {% endblock %}
 </head>
 <body>
-
-	<!-- Modal -->
-	<div class="modal fade" id="CategoryAddModal" role="dialog">
-			<div class="modal-dialog">
-			  <!-- Modal content-->
-			  <div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">메뉴판 생성</h4>
-				  <button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
-						<form method="POST" class="post-form" action="{% url 'owner:add_category' user.pk menuboard_id %}" enctype="multipart/form-data">
-							{% csrf_token %}
-							{{ category_form.as_p }}
-							<button type="submit" class="save btn btn-default">Save</button>
-							
-						</form>
-				</div>
-				<div class="modal-footer">
-				  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			  </div>
-			  
-			</div>
-		  </div>
-		  <!--End Modal-->
+{% block modal %}
+{% endblock %}
+	
 		  
 <div class="super_container">
 	
@@ -54,7 +31,7 @@
 					{% if user.is_authenticated %}
 					<li><a href="{% url 'owner:edit_menuboard_category' user.pk category.menuBoard.menuBoardID category.pk %}">{{ category.name }}</a></li>
 					{% else %}
-					<li><a href="{% url 'menu:list' %}">{{ category.name }}</a></li>
+					<li><a href="{% url 'menu:list_category' shopID menuboardID category.pk %}">{{ category.name }}</a></li>
 					{% endif %}
 
 					{% endfor %}
@@ -63,12 +40,7 @@
 				</ul>
 			</nav>
 			<div class="header_content ml-auto">
-				<div class="search header_search">
-					<form action="#">
-						<input type="search" class="search_input" required="required">
-						<button type="submit" id="search_button" class="search_button"><img src="{% static 'menu/images/magnifying-glass.svg' %}" alt=""></button>
-					</form>
-				</div>
+				
 				<div class="shopping">
 					<!-- Cart -->
 					<a href="#">
@@ -110,12 +82,7 @@
 	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
 		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
 		<div class="logo menu_mm"><a href="#">마이커피</a></div>
-		<div class="search">
-			<form action="#">
-				<input type="search" class="search_input menu_mm" required="required">
-				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="{% static 'menu/images/magnifying-glass.svg' %}" alt=""></button>
-			</form>
-		</div>
+		
 		<nav class="menu_nav">
 			<ul class="menu_mm">
 				

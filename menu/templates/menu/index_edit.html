@@ -10,10 +10,38 @@
 <link rel="stylesheet" type="text/css" href="{% static 'menu/styles/categories_responsive.css' %}">
 {% endblock %}
 			
-	{% block header_category %}
-	<!-- <li><a href="{% url 'menu:list' %}">input</a></li> -->
-		
+{% block modal %}
+<!-- Modal -->
+<div class="modal fade" id="CategoryAddModal" role="dialog">
+	<div class="modal-dialog">
+	  <!-- Modal content-->
+	  <div class="modal-content">
+		<div class="modal-header">
+			<h4 class="modal-title">메뉴판 생성</h4>
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+		</div>
+		<div class="modal-body">
+				<form method="POST" class="post-form" action="{% url 'owner:add_category' user.pk menuboard_id %}" enctype="multipart/form-data">
+					{% csrf_token %}
+					{{ category_form.as_p }}
+					
+					
+				
+		</div>
+		<div class="modal-footer">
+				<button type="submit" class="save btn btn-default">Save</button>
+		  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	</form>
+	  </div>
+	  
+	</div>
+  </div>
+  <!--End Modal-->
+{% endblock %}
 	
+	{% block header_category %}
+
 		<li>
 			<div class="star" data-toggle="modal" data-target="#CategoryAddModal">
 					<a href="#"><img src="{% static 'menu/images/category_add.png' %}" alt=""></a>
@@ -104,13 +132,15 @@
 					<form method="POST" class="post-form" action='' enctype="multipart/form-data">
 						{% csrf_token %}
 						{{ form.as_p }}
-						<button type="submit" class="save btn btn-default">Save</button>
 						
-					</form>
+						
+					
 			</div>
 			<div class="modal-footer">
+					<button type="submit" class="save btn btn-default">Save</button>
 			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
+		</form>
 		  </div>
 		  
 		</div>
@@ -134,6 +164,7 @@
 					<div class="product_grid">
 
 						{% for item in menu_list %}
+						{% if item.category.menuBoard.menuBoardID == menuboard_id %}
 						
 						<!-- Product -->
 						<div class="product">
@@ -147,7 +178,7 @@
 								</div>
 								<div class="product_content clearfix">
 									<div class="product_info">
-										<div class="product_name"><a href="{% url 'menu:menu_detail' item.pk %}">{{ item.name }}</a></div>
+										<div class="product_name"><a href="{% url 'menu:menu_detail' shopID menuboardID item.pk %}">{{ item.name }}</a></div>
 										<div class="product_price">${{ item.price }}</div>
 									</div>
 									<div class="product_options">
@@ -156,6 +187,7 @@
 									</div>
 								</div>
 							</div>
+							{% endif %}
 						{% endfor %}
 						
 

@@ -6,7 +6,7 @@ from menu.models import Category
 
 # Create your views here.
 
-def cart_list(request):
+def cart_list(request,shopID,menuboardID):
     cart = Cart(request)
     total_price = 0
     category_list = Category.objects.all()
@@ -16,14 +16,16 @@ def cart_list(request):
         'cart' : cart,
         'total_price' : total_price,
         'category_list' : category_list,
+        'shopID' : shopID,
+        'menuboardID' : menuboardID,
     })
 
 
-def add_to_cart(request, menu_id, quantity):
+def add_to_cart(request,shopID,menuboardID, menu_id, quantity):
     menu = Menu.objects.get(id=menu_id)
     cart = Cart(request)
     cart.add(menu, menu.price, quantity)
-    return redirect('cart:cart_list')
+    return redirect('cart:cart_list',shopID=shopID,menuboardID=menuboardID)
 
 def remove_from_cart(request, product_id):
     menu = Menu.objects.get(id=product_id)
