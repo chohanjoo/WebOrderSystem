@@ -59,9 +59,9 @@ def create_menuboard(request):
     pass
     
 def edit_menuboard(request, pk, menuboard_id):
-    menu_list = Menu.objects.all()
     menuboard = MenuBoard.objects.get(menuBoardID=menuboard_id)
     category_list = Category.objects.all().filter(menuBoard=menuboard)
+    menu_list = Menu.objects.all().filter(category=category_list[0])
     # menuboard_list = MenuBoard.objects.all()
     if request.method == "POST":
         form = MenuForm(request.POST, request.FILES)

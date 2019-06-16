@@ -31,18 +31,19 @@ def drink_list_category(request,shopID,menuboardID,categoryID):
         })
 
 
-def add_menu(request):
+def add_menu(request,shopID,menuboardID):
 
     if request.method == "POST":
         form = MenuForm(request.POST, request.FILES)
         if form.is_valid():
             menu = form.save(commit=False)
             menu.save()
-            return redirect('menu:list')
+            return redirect('menu:list',shopID=shopID,menuboardID=menuboardID)
 
     else :
         form = MenuForm()
-    return render(request,'menu/add_menu.html', {'form':form})
+    return render(request,'menu/add_menu.html', {'form':form,
+    })
 
 
 def menu_detail(request,shopID,menuboardID,pk):

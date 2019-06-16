@@ -178,7 +178,7 @@
 								</div>
 								<div class="product_content clearfix">
 									<div class="product_info">
-										<div class="product_name"><a href="{% url 'menu:menu_detail' shopID menuboardID item.pk %}">{{ item.name }}</a></div>
+										<div class="product_name"><a href="{% url 'menu:menu_detail' user.shop.shopID menuboard_id item.pk %}">{{ item.name }}</a></div>
 										<div class="product_price">${{ item.price }}</div>
 									</div>
 									<div class="product_options">
