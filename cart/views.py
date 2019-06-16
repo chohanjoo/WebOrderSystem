@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .cart import Cart
 from menu.models import Menu
-from .kakaopay import kakaopay_request
+from .kakaopay import kakaopay_request, insert_success_url
 from menu.models import Category
 
 # Create your views here.
@@ -35,6 +35,8 @@ def remove_from_cart(request, product_id):
 def get_cart(request):
     return render(request, 'cart_list.html', {'cart': Cart(request)})
 
-def pay(request):
+def pay(request,shopID,menuboardID):   
+    success_url = 'http://127.0.0.1:8000/orderingQueue/' + str(shopID) +'/'+ str(menuboardID) + '/'
+    insert_success_url(success_url)
     url = kakaopay_request(request)
     return redirect(url)

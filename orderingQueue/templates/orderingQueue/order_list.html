@@ -20,9 +20,9 @@
               주문번호
             </div>
             <div class="card-body">
-              <h1 class="card-title">{{ order }}</h1>
+              <h1 class="card-title">{{ order.orderNumber }}</h1>
               
-              <a href="{% url 'orderingQueue:order_delete' order %}" class="btn btn-primary">확인</a>
+              <a href="{% url 'orderingQueue:order_delete' shopID menuboardID order.orderNumber %}" class="btn btn-primary">확인</a>
             </div>
           </div>
           
