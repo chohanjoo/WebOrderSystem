@@ -87,7 +87,12 @@
 			<ul class="menu_mm">
 				
 				{% for category in category_list %}
-				<li class="menu_mm"><a href="#">{{ category.name }}</a></li>
+		
+				{% if user.is_authenticated %}
+					<li class="menu_mm"><a href="{% url 'owner:edit_menuboard_category' user.pk category.menuBoard.menuBoardID category.pk %}">{{ category.name }}</a></li>
+					{% else %}
+					<li class="menu_mm"><a href="{% url 'menu:list_category' shopID menuboardID category.pk %}">{{ category.name }}</a></li>
+					{% endif %}
 					{% endfor %}
 			</ul>
 		</nav>

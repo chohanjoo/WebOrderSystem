@@ -10,6 +10,8 @@ def order_add(request,shopID,menuboardID):
     order_number = random.randrange(1,10000)
     OrderNumber(menuBoard=menuboard,orderNumber=order_number).save()
     return render(request,'orderingQueue/order_add.html',{
+        'shopID' : shopID,
+        'menuboardID' : menuboardID,
         'order_number' : order_number,
     })
 
