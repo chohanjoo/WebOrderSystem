@@ -3,7 +3,7 @@ from django import forms
 from .models import Menu, Category
 
 class MenuForm(forms.ModelForm):
-
+ 
     class Meta:
         model = Menu
         fields = ('name', 'price','image','category')
@@ -16,6 +16,7 @@ class MenuForm(forms.ModelForm):
 
 class CategoryForm(forms.ModelForm):
 
+    
     class Meta:
         model = Category
         fields = ('name',)

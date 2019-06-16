@@ -5,6 +5,3 @@ from owner.models import MenuBoard
 class OrderNumber(models.Model):
     menuBoard = models.ForeignKey(MenuBoard, on_delete=models.CASCADE)
     orderNumber = models.PositiveIntegerField(unique=True)
-
-    def __str__(self):
-        return self.orderNumber

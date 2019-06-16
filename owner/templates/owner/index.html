@@ -309,15 +309,17 @@
             <form method="POST" class="post-form" action="{% url 'owner:create_shop' user.pk %}" enctype="multipart/form-data">
               {% csrf_token %}
           {{shop_form.as_p}}
-          <button type="submit" class="save btn btn-default">Save</button>
           
-      </form>
+          
+     
             <!-- <label >메뉴판 이름</label>
             <input type="text"> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="save btn btn-default">Save</button>
         </div>
+      </form>
       </div>
       
     </div>
@@ -335,15 +337,13 @@
           <form method="POST" class="post-form" action='' enctype="multipart/form-data">
             {% csrf_token %}
         {{form.as_p}}
-        <button type="submit" class="save btn btn-default">Save</button>
         
-    </form>
-          <!-- <label >메뉴판 이름</label>
-          <input type="text"> -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="save btn btn-default">Save</button>
       </div>
+    </form>
     </div>
     
   </div>

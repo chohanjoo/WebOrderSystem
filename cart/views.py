@@ -39,4 +39,6 @@ def pay(request,shopID,menuboardID):
     success_url = 'http://127.0.0.1:8000/orderingQueue/' + str(shopID) +'/'+ str(menuboardID) + '/'
     insert_success_url(success_url)
     url = kakaopay_request(request)
+    cart = Cart(request)
+    cart.clear()
     return redirect(url)
