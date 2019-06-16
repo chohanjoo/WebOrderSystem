@@ -26,6 +26,7 @@ urlpatterns = [
     path('owner/',include('owner.urls')),
     path('accounts/', include('accounts.urls')),
     path('cart/',include('cart.urls')),
+    path('orderingQueue/',include('orderingQueue.urls')),
     path('', lambda req: redirect('accounts:login'), name='root'),
 ]
 
