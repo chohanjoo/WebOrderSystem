@@ -18,20 +18,10 @@ data={
     'cancel_url' : 'http://127.0.0.1:8000/accounts/join/'
 }
 
-# result = requests.post("https://kapi.kakao.com/v1/payment/ready",headers=headers,data=data)
+def insert_shop_name(shopName):
+    data['item_name'] = shopName
+    return data
 
-
-# def input_data(total_amount):
-#     # data['total_amount']=total_amount
-#     return data
-
-# def post_init():
-#     data['vat_amount'] = 200
-#     data['tax_free_amount'] = 0
-#     data['approval_url'] = 'http://127.0.0.1:8000/menu/'
-#     data['fail_url'] = 'http://127.0.0.1:8000/accounts/login/'
-#     data['cancel_url'] = 'http://127.0.0.1:8000/accounts/join/'
-#     return data
 
 def insert_success_url(success_url):
     data['approval_url'] = success_url
@@ -42,3 +32,16 @@ def kakaopay_request(self):
     result = requests.post("https://kapi.kakao.com/v1/payment/ready",headers=headers,data=data)
     return result.json()['next_redirect_pc_url']
 
+
+
+# result = requests.post("https://kapi.kakao.com/v1/payment/ready",headers=headers,data=data)
+
+
+
+# def post_init():
+#     data['vat_amount'] = 200
+#     data['tax_free_amount'] = 0
+#     data['approval_url'] = 'http://127.0.0.1:8000/menu/'
+#     data['fail_url'] = 'http://127.0.0.1:8000/accounts/login/'
+#     data['cancel_url'] = 'http://127.0.0.1:8000/accounts/join/'
+#     return data

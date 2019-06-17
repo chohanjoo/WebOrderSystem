@@ -1,15 +1,17 @@
 from django.shortcuts import render,redirect
 from .cart import Cart
 from menu.models import Menu
-from .kakaopay import kakaopay_request, insert_success_url
+from .kakaopay import kakaopay_request, insert_success_url, insert_shop_name
 from menu.models import Category
+from owner.models import MenuBoard,Shop
 
 # Create your views here.
 
 def cart_list(request,shopID,menuboardID):
     cart = Cart(request)
     total_price = 0
-    category_list = Category.objects.all()
+    menuboard = MenuBoard.objects.get(menuBoardID=menuboardID)
+    category_list = Category.objects.all().filter(menuBoard=menuboard)
     for item in cart.cart.item_set.all():
         total_price = total_price + item.total_price
     return render(request,'cart/cart_list.html',{
@@ -38,6 +40,9 @@ def get_cart(request):
 def pay(request,shopID,menuboardID):   
     success_url = 'http://127.0.0.1:8000/orderingQueue/' + str(shopID) +'/'+ str(menuboardID) + '/'
     insert_success_url(success_url)
+    shop = Shop.objects.get(shopID=shopID)
+    insert_shop_name(shop.shopName)
+
     url = kakaopay_request(request)
     cart = Cart(request)
     cart.clear()
